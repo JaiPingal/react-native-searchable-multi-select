@@ -1,31 +1,38 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import { View } from 'react-native';
+import MultiSelect from 'react-native-searchable-multi-select';
 
-import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-searchable-multi-select';
+const renderData: any[] = [
+  { id: '1', name: 'Option 1', isChecked: false },
+  { id: '2', name: 'Option 2', isChecked: false },
+  // Add more options
+];
+const App = () => {
+  const [selected, setSelected] = useState<(number | string)[]>([]);
+  const [searchPhrase, setSearchPhrase] = useState('');
+  const [openDrop, setOpenDrop] = useState(false);
+  const [searchableRenderData, setSearchableRenderData] =
+    useState<any[]>(renderData);
 
-export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
+  const handleDropOpen = () => {
+    setOpenDrop(!openDrop);
+  };
   return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
+    <View>
+      <MultiSelect
+        renderData={searchableRenderData}
+        setSearchPhrase={setSearchPhrase}
+        searchPhrase={searchPhrase}
+        labelName={'Project Name'}
+        setSearchableRenderData={setSearchableRenderData}
+        selected={selected}
+        required={'*'}
+        setSelected={setSelected}
+        openDrop={openDrop}
+        onToggle={handleDropOpen}
+      />
     </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
-});
+export default App;
