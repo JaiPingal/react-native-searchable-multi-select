@@ -61,7 +61,6 @@ const CustomMultiSelect: React.FC<CustomMultiSelectProps> = ({
     setTimeout(() => {
       return onSelectItems(selected);
     }, 1000);
-    // eslint-disable-next-line
   }, []);
 
   const onSelectitem = (item: any) => {
