@@ -1,4 +1,4 @@
-/* eslint-comments/no-unlimited-disable */
+/* eslint-disable */
 import {
   StyleSheet,
   Text,
