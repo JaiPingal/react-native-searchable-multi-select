@@ -161,5 +161,8 @@
     "name": "RNSearchableMultiSelectSpec",
     "type": "modules",
     "jsSrcsDir": "src"
+  },
+  "dependencies": {
+    "react-native-searchable-multi-select": "/home/externlabs/NPM_PACKAGES/react-native-searchable-multi-select"
   }
 }
